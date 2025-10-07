@@ -1,0 +1,22 @@
+{
+  "materias": [
+    {
+      "id": 1,
+      "nombre": "Aplicaciones Web Progresivas",
+      "profesor": "Manuel Contreras",
+      "horario": "Lunes y Miércoles 07:00-09:00"
+    },
+    {
+      "id": 2,
+      "nombre": "Desarrollo Móvil",
+      "profesor": "Rogelio",
+      "horario": "Martes y Jueves 05:00-07:00"
+    },
+    {
+      "id": 3,
+      "nombre": "Videojuegos",
+      "profesor": "Gerardo Villareal",
+      "horario": "Miércoles y Viernes 08:00-10:00"
+    }
+  ]
+}
