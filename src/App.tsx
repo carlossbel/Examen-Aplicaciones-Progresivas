@@ -1,6 +1,21 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 
+/*
+ * EXPLICACIÓN DE LA ARQUITECTURA APP SHELL
+ * 
+ * ¿Qué elementos del App Shell se mantienen siempre?
+ * 1. Header (Encabezado): "Mi Universidad" - siempre visible
+ * 2. Nav (Menú lateral): Inicio, Materias, Horarios, Perfil - estructura fija
+ * 3. Footer (Pie de página): "Universidad XYZ – 2025" - siempre visible
+ * 4. Estructura del layout: Grid CSS que organiza la aplicación
+ * 
+ * ¿Qué elementos cambian dinámicamente?
+ * 1. Contenido principal (main): Cambia según la sección seleccionada
+ * 2. Lista de materias: Se carga desde el archivo JSON local
+ * 3. Información específica de cada sección: Cada botón muestra diferente contenido
+ */
+
 interface Materia {
   id: number;
   nombre: string;
@@ -13,6 +28,7 @@ function App() {
   const [materias, setMaterias] = useState<Materia[]>([])
   const [loading, setLoading] = useState(false)
 
+  // Cargar materias desde JSON local
   const cargarMaterias = async () => {
     setLoading(true)
     try {
@@ -34,10 +50,12 @@ function App() {
 
   return (
     <div className="app">
+      {/* APP SHELL - ENCABEZADO (siempre presente) */}
       <header className="header">
         <h1>Mi Universidad</h1>
       </header>
 
+      {/* APP SHELL - MENÚ LATERAL (siempre presente) */}
       <nav className="nav">
         <button 
           onClick={() => setActiveSection('inicio')}
@@ -65,6 +83,7 @@ function App() {
         </button>
       </nav>
 
+      {/* CONTENIDO DINÁMICO (cambia según la sección activa) */}
       <main className="content">
         {activeSection === 'inicio' && (
           <div className="section">
@@ -73,10 +92,10 @@ function App() {
             <div className="info-card">
               <h3>Características:</h3>
               <ul>
-                <li>✅ Funciona sin conexión a internet</li>
-                <li>✅ Se puede instalar en tu dispositivo</li>
-                <li>✅ Carga rápida con App Shell</li>
-                <li>✅ Actualización automática de contenido</li>
+                <li>Funciona sin conexión a internet</li>
+                <li>Se puede instalar en tu dispositivo</li>
+                <li>Carga rápida con App Shell</li>
+                <li>Actualización automática de contenido</li>
               </ul>
             </div>
           </div>
@@ -129,6 +148,7 @@ function App() {
         )}
       </main>
 
+      {/* APP SHELL - PIE DE PÁGINA (siempre presente) */}
       <footer className="footer">
         <p>Universidad XYZ – 2025</p>
       </footer>
